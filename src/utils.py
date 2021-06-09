@@ -49,7 +49,7 @@ def cut_edge(im, edge_h=20, edge_w=20):
     im = im[edge_h:height-edge_h, edge_w:width-edge_w]
     return im, im.shape[0], im.shape[1]
 
-def recrop(ref, im)
+def recrop(ref, im):
     h, w = ref.shape[:2]
     h2,w2 = im.size
     diffh = h2-h
