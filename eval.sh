@@ -11,7 +11,7 @@ mkdir -p $sampledir
 touch $logfile
 
 cd src
-
+echo "RUNNING EVALUATE.py"
 unbuffer python evaluate.py \
     --dnnet=convResnet \
     --dtnet=hypercolumn \
@@ -23,3 +23,4 @@ unbuffer python evaluate.py \
     --image_size=1920 \
     --gpu \
 2>&1 | tee $logfile
+
