@@ -49,16 +49,14 @@ def cut_edge(im, edge_h=20, edge_w=20):
     im = im[edge_h:height-edge_h, edge_w:width-edge_w]
     return im, im.shape[0], im.shape[1]
 
-def recrop(ref, im):
-    h, w = ref.shape[:2]
-    h2,w2 = im.size
+def recrop(w,h, im):
+    h2,w2 = im.shape[:2]
     diffh = h2-h
     diffw = w2-w
     hmin = diffh/2
     hmax = h2 - (diffh/2)
     wmin = diffw/2
     wmax = w2 - (diffw/2)
-
     cropped = np.array(im,dtype=np.uint16)[hmin:hmax, wmin:wmax]
     return cropped
 
