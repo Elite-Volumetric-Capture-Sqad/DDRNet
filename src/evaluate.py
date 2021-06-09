@@ -205,9 +205,12 @@ def loop_body_patch_time(sess, name, params, depth_in, color, mask, config):
     print("saving img {}.".format(name))
     if depth_dn_im is not None:
         depth_dn_im = (((depth_dn_im + 1.0) * thres_range + low_thres) * mask).astype(np.uint16)
+        # crop back here 
+        depth_dn_im = utils.recrop(depth_in, depth_dn_im)
         utils.save_image(depth_dn_im, config.sample_dir, "dn_{}".format(name))
     if depth_dt_im is not None:
         depth_dt_im = (((depth_dt_im + 1.0) * thres_range + low_thres) * mask).astype(np.uint16)
+        depth_dt_im = utils.recrop(depth_in, depth_dt_im)
         utils.save_image(depth_dt_im, config.sample_dir, "dt_{}".format(name))
     t_end = time.time()
     return (t_end - t_start)
